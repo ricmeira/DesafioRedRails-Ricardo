@@ -1,12 +1,21 @@
-<h1>Twitter Red Rocket</h1>
-
-<p>
-	<ul>
-		<li><%= link_to "Register",new_user_path %></li>
-	</ul>
-</p>
+<p id="notice"><%= notice %></p>
 
 <ul>
+	<% if !@user.nil?%>
+		<%= form_for @tweet do |t| %>
+
+			<p>
+				<%= t.label "Send your tweet:" %><br/>
+				<%= t.text_area :description %>
+			</p>
+			<p>
+				<%= t.submit%>
+			</p>
+		<%end%>
+	<%end%>
+
+
+
 	<% @tweets.each do |tweet| %>
 
 	<li>

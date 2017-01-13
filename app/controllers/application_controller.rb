@@ -15,8 +15,7 @@ class ApplicationController < ActionController::Base
 
  	def require_no_authentication
  		if user_signed_in?
- 			redirect_to root_path,
- 			notice: 'Already logged'
+ 			redirect_to root_path
  		end
  	end
 end

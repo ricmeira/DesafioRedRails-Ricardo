@@ -17,7 +17,8 @@ class UserSessionsController < ApplicationController
 	end
 
 	def destroy
-		user.session.destroy
+		user_session.destroy
+		
 		redirect_to root_path , notice: 'Signed out'
 	end
 end

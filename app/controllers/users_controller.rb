@@ -14,6 +14,9 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 
 		if @user.save
+			@user_session = UserSession.new(session,(params[:user]))
+			@user_session.authenticate!
+			
 			redirect_to @user, notice: 'Cadastro criado com sucesso'
 		else
 			render action: :new
