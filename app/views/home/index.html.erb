@@ -19,7 +19,7 @@
 	<% @tweets.each do |tweet| %>
 
 	<li>
-		<%="#{tweet.description}" %>
+		 <%=User.find(tweet.user_id).full_name%> tweeted: <%= "#{tweet.description}" %>
 	</li>
 
 	<% end %>
