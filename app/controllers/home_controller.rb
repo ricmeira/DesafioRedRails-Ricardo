@@ -5,6 +5,6 @@ class HomeController < ApplicationController
 			@user = current_user
 		end
 		@tweet = Tweet.new
-		@tweets = Tweet.take(10)
+		@tweets = Tweet.last(20).reverse
 	end
 end
