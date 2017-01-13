@@ -1,0 +1,17 @@
+<h1>Twitter Red Rocket</h1>
+
+<p>
+	<ul>
+		<li><%= link_to "Register",new_user_path %></li>
+	</ul>
+</p>
+
+<ul>
+	<% @tweets.each do |tweet| %>
+
+	<li>
+		<%="#{tweet.description}" %>
+	</li>
+
+	<% end %>
+</ul>
