@@ -16,16 +16,20 @@
 			<%end%>
 		</div>
 	</div>
-	
+
 	<div class="container container-table">
     	<div class="row vertical-center-row">	
-			<h2> Latest Tweets </h2>
+			<h2> Latest Tweets:</h2>
 
 	    	<% @tweets.each do |tweet| %>
-
-				<li>
-			 	<%=User.find(tweet.user_id).full_name%> tweeted: <%= "#{tweet.description}" %>
-				</li>
+				<div class="panel panel-default">
+				 	<div class="panel-heading">
+			 			<%=User.find(tweet.user_id).full_name%>
+			 		</div>
+			 		<div class="panel-body">
+			 		 	<%= "#{tweet.description}" %>
+			 		 </div>
+			 	</div>
 			<% end %>
 		</div>
 	</div>
