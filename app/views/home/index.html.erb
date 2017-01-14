@@ -1,26 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<ul>
-	<% if !@user.nil?%>
-		<%= form_for @tweet do |t| %>
+	<div class="container container-table">
+    	<div class="row vertical-center-row">	
+			<% if !@user.nil?%>
+				<%= form_for @tweet do |t| %>
 
-			<p>
-				<%= t.label "Send your tweet:" %><br/>
-				<%= t.text_area :description %>
-			</p>
-			<p>
-				<%= t.submit%>
-			</p>
-		<%end%>
-	<%end%>
+					<p>
+						<%= t.label "Send your tweet:" %><br/>
+						<%= t.text_area :description %>
+					</p>
+					<p>
+						<%= t.submit%>
+					</p>
+				<%end%>
+			<%end%>
+		</div>
+	</div>
+	
+	<div class="container container-table">
+    	<div class="row vertical-center-row">	
+			<h2> Latest Tweets </h2>
 
-	<h2> Latest Tweets </h2>
+	    	<% @tweets.each do |tweet| %>
 
-	<% @tweets.each do |tweet| %>
-
-	<li>
-		 <%=User.find(tweet.user_id).full_name%> tweeted: <%= "#{tweet.description}" %>
-	</li>
-
-	<% end %>
-</ul>
+				<li>
+			 	<%=User.find(tweet.user_id).full_name%> tweeted: <%= "#{tweet.description}" %>
+				</li>
+			<% end %>
+		</div>
+	</div>
