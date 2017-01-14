@@ -1,9 +1,9 @@
-<ul>
-  <li>
+<ul class="nav nav-pills">
+  <li style="float:right">
     <%= link_to "My Page",
                   user_path(current_user) %>
   </li>
-  <li>
+  <li style="float:right">
     <%= link_to "Logout", user_session_path(@user),
                     method: :delete %>
   </li>
