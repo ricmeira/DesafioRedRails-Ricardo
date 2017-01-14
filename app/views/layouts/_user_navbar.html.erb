@@ -1,12 +1,10 @@
-<nav>
-  <ul>
-    <li>
-      <%= link_to "My Page",
+<ul>
+  <li>
+    <%= link_to "My Page",
                   user_path(current_user) %>
-    </li>
-    <li>
-      <%= link_to "Logout", user_session_path(@user),
+  </li>
+  <li>
+    <%= link_to "Logout", user_session_path(@user),
                     method: :delete %>
-    </li>
-  </ul>
-</nav>
+  </li>
+</ul>

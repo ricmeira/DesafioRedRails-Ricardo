@@ -11,15 +11,19 @@
 
   <body>
 
-    <header>
-    	<div id="header-wrap">
-    		<h1><%= link_to "Twitter", root_path %></h1>
-	      	<% if user_signed_in? %>
-	        	<%= render 'layouts/user_navbar' %>
-	      	<% else %>
-	        	<%= render 'layouts/visitor_navbar' %>
-	      	<% end %>
-    	</div>
+    <header class="page-header">
+      <nav>
+        	<div class="container">
+              <div class="navbar-header">
+                <h1><%= link_to "Twitter", root_path %></h1>
+              </div>
+    	      	<% if user_signed_in? %>
+    	        	<%= render 'layouts/user_navbar' %>
+    	      	<% else %>
+    	        	<%= render 'layouts/visitor_navbar' %>
+    	      	<% end %>
+        	</div>
+        </nav>
   	</header>
 
     <%= yield %>
