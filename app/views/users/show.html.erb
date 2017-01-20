@@ -1,9 +1,34 @@
-<h2>Perfil: <%= @user.full_name %></h2>
+<div class="col-md-6">
+	<div>
+		<h2><%= @user.full_name %></h2>
+		<ul>
+			<li>Location: <%= @user.location %></li>
+			<li>Bio: <%= @user.bio%></li>
+		</ul>
+	</div>
+</div>
 
-<ul>
-	<li>Location: <%= @user.location %></li>
-	<li>Bio: <%= @user.bio%></li>
-</ul>
+<div>
+	<%=render 'followers_modal'%>
+	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Followers</button>
+	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Following</button>
+	<%= form_for @follow do |f| %>
+			<%=f.submit%>
+	<%end%>
+</div>
 
-<%= link_to 'Edit', edit_user_path(@user) %>
-<%= link_to "Home",root_path%>
+<div class="container container-table">
+    <div class="row vertical-center-row">	
+	    <% @tweets.each do |tweet| %>
+			<div class="panel panel-default">
+				 <div class="panel-heading">
+			 		<%= link_to User.find(tweet.user_id).full_name, user_path(User.find(tweet.user_id))%>
+			 	</div>
+			 	<div class="panel-body">
+			 		 <%= "#{tweet.description}" %>
+			 	</div>
+			 </div>
+		<% end %>
+	</div>
+</div>
+
