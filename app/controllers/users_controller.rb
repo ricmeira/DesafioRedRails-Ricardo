@@ -10,6 +10,10 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])	
 		@tweets = Tweet.where("user_id = ?",[@user.id]).last(20)
 		@follow = Follow.new
+
+		@followers = Follow.where("follower_id = ?",[@user.id])
+
+		@followees = Follow.where("followee_id = ?",[@user.id])
 	end
 
 	def create

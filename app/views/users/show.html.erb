@@ -10,10 +10,12 @@
 
 <div>
 	<%=render 'followers_modal'%>
-	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Followers</button>
-	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Following</button>
+	<%=render 'followees_modal'%>
+	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#folowerModal">Followers</button>
+	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#foloweeModal">Following</button>
 	<%= form_for @follow do |f| %>
-			<%=f.submit%>
+		<%=hidden_field_tag "followee_id", @user.id %>
+		<%=f.submit%>
 	<%end%>
 </div>
 

@@ -1,15 +1,15 @@
-<div class="modal fade" id="folowerModal" role="dialog">
+<div class="modal fade" id="foloweeModal" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Followers</h4>
+        <h4 class="modal-title">Following</h4>
       </div>
       <div class="modal-body">
-        <%@followees.each do |u| %>
+        <%@followers.each do |u| %>
           <div class="panel panel-default">
            <div class="panel-heading">
-            <%= link_to User.find(u.follower_id).full_name, user_path(User.find(u.follower_id))%>
+            <%= link_to User.find(u.followee_id).full_name, user_path(User.find(u.followee_id))%>
           </div>
          </div>
         <%end%>

@@ -1,6 +1,19 @@
 class FollowsController < ApplicationController
 
 	def create
-		@follow = Follow.new()
+		@user = current_user
+		@followee = User.find(params[:follow][:followee_id])
+
+
+
+		@follow = Follow.create!(follower_id: @user.id, followee_id: @followee.id)
+
+		redirect_to @user, notice: 'User is now being followed'
+
 	end
+
+	private
+		def followee_params
+	    	params.require(:follow).permit(:followee_id)
+	  	end
 end
