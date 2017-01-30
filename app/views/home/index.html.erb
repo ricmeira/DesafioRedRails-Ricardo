@@ -4,7 +4,7 @@
 				<%= form_for @tweet do |t| %>
 
 					<p>
-						<%= t.label "Send your tweet:" %><br/>
+						<b><%= t 'layouts.home.send'%></b><br/>
 						<%= t.text_area :description %>
 					</p>
 					<p>
@@ -17,7 +17,7 @@
 
 	<div class="container container-table">
     	<div class="row vertical-center-row">	
-			<h2> Latest Tweets:</h2>
+			<h2> <%= t 'layouts.home.latests_tweets'%></h2>
 
 	    	<% @tweets.each do |tweet| %>
 				<div class="panel panel-default">

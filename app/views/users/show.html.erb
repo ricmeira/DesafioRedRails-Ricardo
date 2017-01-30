@@ -2,8 +2,8 @@
 	<div>
 		<h2><%= @user.full_name %></h2>
 		<ul>
-			<li>Location: <%= @user.location %></li>
-			<li>Bio: <%= @user.bio%></li>
+			<li><%= t '.location',location: @user.location %></li>
+			<li><%= t '.bio',bio: @user.bio%></li>
 		</ul>
 	</div>
 </div>
@@ -11,11 +11,11 @@
 <div>
 	<%=render 'followers_modal'%>
 	<%=render 'followees_modal'%>
-	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#folowerModal">Followers</button>
-	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#foloweeModal">Following</button>
+	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#folowerModal"><%= t 'follow.followers'%></button>
+	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#foloweeModal"><%= t 'follow.following'%></button>
 	<%= form_for @follow do |f| %>
 		<%=hidden_field_tag "followee_id", @user.id %>
-		<%=f.submit%>
+		<%=f.submit t('follow.follow')%>
 	<%end%>
 </div>
 

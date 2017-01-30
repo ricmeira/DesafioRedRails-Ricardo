@@ -2,7 +2,7 @@ class FollowsController < ApplicationController
 
 	def create
 		@user = current_user
-		@followee = User.find(params[:follow][:followee_id])
+		@followee = User.find(params[:followee_id])
 
 
 
