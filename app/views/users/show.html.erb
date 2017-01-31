@@ -1,36 +1,52 @@
-<div class="col-md-6">
-	<div>
-		<h2><%= @user.full_name %></h2>
-		<ul>
-			<li><%= t '.location',location: @user.location %></li>
-			<li><%= t '.bio',bio: @user.bio%></li>
-		</ul>
+<div id="jump-line">
+	<div class="col-md-2">
+		<div>
+			<ul>
+				<h2>
+					<%= @user.full_name %>
+				</h2>
+
+				<li>
+					<%= t '.bio',bio: @user.bio%>				
+				</li>
+				<li>
+					<%= t '.location',location: @user.location %>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="col-md-8">
+		<%=render 'followers_modal'%>
+		<%=render 'followees_modal'%>
+		<div class="col-md-2"> 
+			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#folowerModal"><%= t 'follow.followers'%></button>
+		</div>
+		<div class="col-md-8">
+			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#foloweeModal"><%= t 'follow.following'%></button>
+		</div>
+		<div class="col-md-2">
+			<%= form_for @follow do |f| %>
+				<%=hidden_field_tag "followee_id", @user.id %>
+				<%=f.submit t('follow.follow')%>
+			<%end%>
+		</div>
+	</div>
+
+	<div class="col-md-8" id="jump-line">
+		<div class="container container-table">
+		    <div class="row vertical-center-row">	
+			    <% @tweets.each do |tweet| %>
+					<div class="panel panel-default">
+						 <div class="panel-heading">
+					 		<%= link_to User.find(tweet.user_id).full_name, user_path(User.find(tweet.user_id))%>
+					 	</div>
+					 	<div class="panel-body">
+					 		 <%= "#{tweet.description}" %>
+					 	</div>
+					 </div>
+				<% end %>
+			</div>
+		</div>
 	</div>
 </div>
-
-<div>
-	<%=render 'followers_modal'%>
-	<%=render 'followees_modal'%>
-	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#folowerModal"><%= t 'follow.followers'%></button>
-	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#foloweeModal"><%= t 'follow.following'%></button>
-	<%= form_for @follow do |f| %>
-		<%=hidden_field_tag "followee_id", @user.id %>
-		<%=f.submit t('follow.follow')%>
-	<%end%>
-</div>
-
-<div class="container container-table">
-    <div class="row vertical-center-row">	
-	    <% @tweets.each do |tweet| %>
-			<div class="panel panel-default">
-				 <div class="panel-heading">
-			 		<%= link_to User.find(tweet.user_id).full_name, user_path(User.find(tweet.user_id))%>
-			 	</div>
-			 	<div class="panel-body">
-			 		 <%= "#{tweet.description}" %>
-			 	</div>
-			 </div>
-		<% end %>
-	</div>
-</div>
-

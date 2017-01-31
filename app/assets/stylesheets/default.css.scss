@@ -1,0 +1,21 @@
+$sans-serif-families:  "Helvetica",sans-serif;
+$primary-color: #eeeeee;
+
+*{
+	font-family: $sans-serif-families;
+	font-size: 14px;	
+}
+
+body {
+	background-color: $primary-color;
+}
+
+#header{
+	margin:0px;
+    padding:0px;
+	background-color: #ffffff;
+}
+
+#jump-line{
+	margin-top: 10px;
+}

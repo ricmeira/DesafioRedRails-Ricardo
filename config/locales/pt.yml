@@ -5,8 +5,8 @@ pt:
     edit:
       title : Editar Perfil
     show: 
-      location: "Localização: %{location}"
-      bio: "Descrição: %{bio}"
+      location: "%{location}"
+      bio: "%{bio}"
   
   user_sessions:
     new:
