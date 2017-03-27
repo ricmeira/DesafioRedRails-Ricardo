@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
+
 		@user = User.find(params[:id])	
 		@tweets = Tweet.where("user_id = ?",[@user.id]).last(20)
 		@follow = Follow.new
@@ -14,6 +15,11 @@ class UsersController < ApplicationController
 		@followers = Follow.where("follower_id = ?",[@user.id])
 
 		@followees = Follow.where("followee_id = ?",[@user.id])
+
+		if user_signed_in?
+			@current = current_user
+			#already_following?(@followers)
+		end
 	end
 
 	def create
@@ -42,6 +48,16 @@ class UsersController < ApplicationController
 			render action: :edit
 		end
 	end
+
+	def already_following?(fwrs)
+		fwrs.each do |f|
+			if User.find(f.follower_id).id == current_user.id
+				return true
+			end
+		end
+		return false
+	end
+	helper_method :already_following?
 
 	private
 		def user_params

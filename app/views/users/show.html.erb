@@ -25,12 +25,15 @@
 		<div class="col-md-8">
 			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#foloweeModal"><%= t 'follow.following'%></button>
 		</div>
-		<div class="col-md-2">
-			<%= form_for @follow do |f| %>
-				<%=hidden_field_tag "followee_id", @user.id %>
-				<%=f.submit t('follow.follow')%>
-			<%end%>
-		</div>
+
+		<% if !@current.nil? && @current != @user && !already_following?(@followees)%>
+			<div class="col-md-2">
+				<%= form_for @follow do |f| %>
+					<%=hidden_field_tag "followee_id", @user.id %>
+					<%=f.submit t('follow.follow')%>
+				<%end%>
+			</div>
+		<%end%>
 	</div>
 
 	<div class="col-md-8" id="jump-line">
