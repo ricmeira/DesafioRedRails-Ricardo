@@ -26,11 +26,19 @@
 			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#foloweeModal"><%= t 'follow.following'%></button>
 		</div>
 
-		<% if !@current.nil? && @current != @user && !already_following?(@followees)%>
+		<% if !@current.nil? && @current != @user %>
 			<div class="col-md-2">
-				<%= form_for @follow do |f| %>
-					<%=hidden_field_tag "followee_id", @user.id %>
-					<%=f.submit t('follow.follow')%>
+				<% if @if_follow.nil?%>
+					<%= form_for @follow do |f| %>
+						<%=hidden_field_tag "followee_id", @user.id %>
+						<%=f.submit t('follow.follow')%>
+					<%end%>
+				<%else%>
+					<%= form_for @if_follow, method: :delete do |f| %>
+						
+						<%=f.submit t('follow.unfollow')%>
+					<%end%>
+
 				<%end%>
 			</div>
 		<%end%>

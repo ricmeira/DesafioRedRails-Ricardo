@@ -16,6 +16,7 @@ pt:
     followers: Seguidores
     following: Seguindo
     follow: Seguir
+    unfollow: Deixar de Seguir
 
   links: 
     back: Voltar

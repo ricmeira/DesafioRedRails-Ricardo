@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
 		if user_signed_in?
 			@current = current_user
-			#already_following?(@followers)
+			@if_follow = already_following?
 		end
 	end
 
@@ -49,13 +49,13 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def already_following?(fwrs)
-		fwrs.each do |f|
+	def already_following?
+		@followees.each do |f|
 			if User.find(f.follower_id).id == current_user.id
-				return true
+				return f
 			end
 		end
-		return false
+		return nil
 	end
 	helper_method :already_following?
 
