@@ -6,12 +6,14 @@ class FollowsController < ApplicationController
 
 		@follow = Follow.create!(follower_id: @user.id, followee_id: @followee.id)
 
-		redirect_to @user, notice: 'User is now being followed'
+		redirect_to :back
 
 	end
 
 	def destroy
 		Follow.destroy(params[:id])
+
+		redirect_to :back
 	end
 
 	private
